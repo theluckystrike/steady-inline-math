@@ -2,6 +2,7 @@ import { PluginSettingTab, type SettingDefinitionItem } from 'obsidian';
 import { sponsorsSettingItems } from './license/github-obsidian';
 import { PRO_UI, isPro } from './pro';
 import type SteadyInlineMathPlugin from './main';
+import { helloSettingItems } from './hello/settings';
 
 export interface SteadyInlineMathSettings { enabled: boolean; folderRules: string }
 export const DEFAULT_SETTINGS: SteadyInlineMathSettings = { enabled: true, folderRules: '' };
@@ -11,6 +12,11 @@ export function normalizeSettings(saved: Partial<SteadyInlineMathSettings> | nul
 export class SteadyInlineMathSettingTab extends PluginSettingTab {
 	constructor(app: ConstructorParameters<typeof PluginSettingTab>[0], readonly owner: SteadyInlineMathPlugin) { super(app, owner); }
 	getSettingDefinitions(): SettingDefinitionItem[] {
+		// The product rows, then the "More from NoteMods" card (packages/hello).
+		return [...this.productSettingDefinitions(), ...helloSettingItems()];
+	}
+
+	productSettingDefinitions(): SettingDefinitionItem[] {
 		return [
 			...(this.owner.pro ? sponsorsSettingItems(this.owner.pro, PRO_UI) : []),
 			{ name: 'Enable guard', desc: 'Add temporary braces while you edit an inline equation in Live Preview.', control: { type: 'toggle', key: 'enabled', defaultValue: true } },

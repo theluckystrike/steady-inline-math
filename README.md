@@ -52,6 +52,8 @@ Run “Steady Inline Math: Show equations (Pro)” to open a side panel. It list
 
 ## Install
 
+Open Settings, then Community plugins, then Browse, and search for "Steady Inline Math". Select Install, then Enable.
+
 For a manual install, copy `main.js`, `manifest.json` and `styles.css` from the release into `<vault>/.obsidian/plugins/steady-inline-math/`. Enable Steady Inline Math in Settings → Community plugins. This version needs Obsidian 1.13.4 or later.
 
 The plugin uses the editor extension API and native settings controls. It has no separate server or editor framework. Keep a copy of an important note when you first try software that changes its source.
@@ -65,6 +67,8 @@ The final source includes the space you typed. A boundary space may affect Obsid
 Use one caret with no selected text. Source mode and Reading view do not add guards. If a line is skipped, simplify it to a plain paragraph before you test the guard.
 
 ## Settings
+
+After a minor or major update, this plugin opens one What's new tab in the background. The tab and settings card suggest other NoteMods plugins and Zovo Chat and link to notemods.com for feedback ([privacy](https://notemods.com/privacy/)). The tab sends no data. Turn the tab off in Settings.
 
 “Enable guard” is on by default. The command and settings control use the same saved value. “Folder rules (Pro)” starts empty. Saved rules remain in the plugin data when Pro is off, but the free guard ignores them.
 
@@ -102,4 +106,4 @@ After a successful check, Pro can work offline for up to 14 days. Sign out or a 
 
 ## Support
 
-Report a problem in the source repository’s issues after it is available. Include your Obsidian version, editor mode, the source of a small test paragraph and the cursor steps. Remove private text from the sample. State whether the error occurs before or after cleanup, and whether another plugin changes equations. The publisher is theluckystrike at notemods.com. The source uses the MIT license.
+Report a problem in the issues of the [source repository](https://github.com/theluckystrike/steady-inline-math/issues). Include your Obsidian version, editor mode, the source of a small test paragraph and the cursor steps. Remove private text from the sample. State whether the error occurs before or after cleanup, and whether another plugin changes equations. The publisher is theluckystrike at notemods.com. The source uses the MIT license.

@@ -7,6 +7,8 @@ import { folderEnabled } from './math';
 import { EquationPanel, PANEL_ID } from './panel';
 import { PRO_LABEL, SPONSORS, bindPro, isPro, resetPro } from './pro';
 import { DEFAULT_SETTINGS, SteadyInlineMathSettingTab, normalizeSettings, type SteadyInlineMathSettings } from './settings';
+import { setupHello } from './hello/index';
+import WHATS_NEW from './whats-new.json';
 
 export default class SteadyInlineMathPlugin extends Plugin {
 	settings: SteadyInlineMathSettings = { ...DEFAULT_SETTINGS };
@@ -17,6 +19,8 @@ export default class SteadyInlineMathPlugin extends Plugin {
 	readonly panels = new Set<EquationPanel>();
 	filePath(state: EditorState): string { return state.field(editorInfoField, false)?.file?.path ?? ''; }
 	async onload(): Promise<void> {
+		// First: "What's new" reads its state before the settings load (packages/hello). It does not wait.
+		setupHello(this, WHATS_NEW);
 		await this.loadSettings();
 		const pro = createGitHubSponsors(this.app, this.manifest.id, SPONSORS, this);
 		pro.init(); this.pro = pro; bindPro(pro);
