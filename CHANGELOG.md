@@ -1,5 +1,11 @@
 # steady-inline-math
 
+## 1.1.1
+
+### Patch Changes
+
+- The Pro notice for the equation panel now has a Sponsor on GitHub button.
+
 ## 1.1.0
 
 ### Minor Changes

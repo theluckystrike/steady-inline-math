@@ -1,7 +1,7 @@
 {
 	"id": "steady-inline-math",
 	"name": "Steady Inline Math",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"minAppVersion": "1.13.4",
 	"description": "Keep inline math stable when you type spaces next to dollar signs in a paragraph.",
 	"author": "Michael Lip",

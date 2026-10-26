@@ -5,7 +5,7 @@ import { createGitHubSponsors } from './license/github-obsidian';
 import { GuardController } from './guard';
 import { folderEnabled } from './math';
 import { EquationPanel, PANEL_ID } from './panel';
-import { PRO_LABEL, SPONSORS, bindPro, isPro, resetPro } from './pro';
+import { PRO_LABEL, SPONSORS, bindPro, isPro, resetPro, proNotice } from './pro';
 import { DEFAULT_SETTINGS, SteadyInlineMathSettingTab, normalizeSettings, type SteadyInlineMathSettings } from './settings';
 import { setupHello } from './hello/index';
 import WHATS_NEW from './whats-new.json';
@@ -66,7 +66,7 @@ export default class SteadyInlineMathPlugin extends Plugin {
 		new Notice(this.settings.enabled ? 'Inline math guard is on.' : 'Inline math guard is off.');
 	}
 	async showEquations(): Promise<boolean> {
-		if (!isPro()) { new Notice(`The equation panel needs ${PRO_LABEL}. Open the plugin settings to sign in with GitHub.`); return false; }
+		if (!isPro()) { proNotice(`The equation panel needs ${PRO_LABEL}.`); return false; }
 		const leaf = this.app.workspace.getLeavesOfType(PANEL_ID)[0] ?? this.app.workspace.getRightLeaf(false);
 		if (!leaf) return false;
 		this.capturePanelNote();

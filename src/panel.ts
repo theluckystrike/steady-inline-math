@@ -1,6 +1,6 @@
 import { ItemView, type WorkspaceLeaf } from 'obsidian';
 import { equations } from './math';
-import { PRO_LABEL, isPro } from './pro';
+import { PRO_LABEL, isPro, proText } from './pro';
 import type SteadyInlineMathPlugin from './main';
 export const PANEL_ID = 'steady-inline-math-equations';
 export class EquationPanel extends ItemView {
@@ -18,7 +18,7 @@ export class EquationPanel extends ItemView {
 		this.contentEl.empty();
 		this.contentEl.addClass('steady-inline-math-panel');
 		this.contentEl.createEl('h2', { text: `Equations (${PRO_LABEL})` });
-		if (!isPro()) { this.contentEl.createEl('p', { text: 'Sign in with GitHub in the plugin settings to use this panel.' }); return; }
+		if (!isPro()) { this.contentEl.createEl('p', { text: proText(`The equation panel needs ${PRO_LABEL}.`) }); return; }
 		const path = this.owner.capturePanelNote();
 		const cm = [...this.owner.guard.views].find((v) => this.owner.filePath(v.state) === path && v.dom.isConnected && v.dom.offsetParent !== null);
 		const note = this.app.vault.getFileByPath(path);
